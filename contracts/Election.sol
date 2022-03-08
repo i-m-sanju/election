@@ -16,7 +16,7 @@ contract Election {
        addCandiate("Candidate 1");
        addCandiate("Candidate 2");
     }
-    function addCandiate (string memory _name) private{
+    function addCandiate (string _name) private{
         candidateCount ++;
         candidates[candidateCount]= Candidate(candidateCount, _name, 0); //o is vote count initial
     }
