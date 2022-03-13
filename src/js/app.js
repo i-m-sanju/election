@@ -51,16 +51,23 @@ App = {
        var candidateResults = $("#candidatesResults");
        candidateResults.empty();
 
+       var candidateSelect = $('#candidatesSelect');
+       candidateSelect.empty();
+
        for( var i=1; i<= candidateCount; i++){
          electionInstance.candidates(i).then(function(candidate){
            var id = candidate[0];
            var name = candidate[1];
            var voteCount = candidate[2];
 
-           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>"
-           candidateResults.append(candidateTemplate); 
+           var candidateTemplate = "<tr><th>" + id + "</th><td>" + name + "</td><td>" + voteCount + "</td></tr>"
+           candidatesResults.append(candidateTemplate);
+
+           var candidateOption = "<option value='" + id + "' >" + name + "</ option>"
+           candidatesSelect.append(candidateOption);
          });
        }
+      //  return electionInstance.voters(App.account);
       
        loader.hide();
        content.show();
